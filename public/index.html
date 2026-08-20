@@ -1,1 +1,69 @@
-Temp
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partner Calendar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <h1>Partner Calendar</h1>
+      <p>행사 일정 · 참석 여부 · 사진 및 후기 공유</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn ghost" id="profileBtn">내 정보</button>
+      <button class="btn ghost" id="adminBtn">관리자</button>
+      <button class="btn primary" id="newBtn" hidden>+ 행사 등록</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <div class="legend">
+        <span class="cat-hq">HQ Visit</span><span class="cat-meeting">미팅</span>
+        <span class="cat-conference">학회</span><span class="cat-training">교육</span>
+        <span class="cat-kol">KOL Lecture</span><span class="cat-other">기타</span>
+      </div>
+      <div class="calhead"><button id="prevBtn">‹</button><strong id="month"></strong><button id="nextBtn">›</button></div>
+      <div class="week"><div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div></div>
+      <div class="days" id="days"></div>
+    </section>
+
+    <aside class="card side">
+      <h2 id="selectedTitle">선택한 날짜</h2>
+      <div id="detail" class="empty">달력에서 날짜를 선택하세요.</div>
+    </aside>
+  </main>
+</div>
+
+<dialog id="profileDlg"><form method="dialog" class="modal" id="profileForm">
+  <h3>사용자 정보</h3>
+  <p class="muted">처음 한 번 입력하면 이 기기에 저장됩니다.</p>
+  <input id="company" placeholder="회사명" required>
+  <input id="position" placeholder="직책" required>
+  <input id="userName" placeholder="이름" required>
+  <button class="btn primary" value="default">저장</button>
+</form></dialog>
+
+<dialog id="eventDlg"><form method="dialog" class="modal" id="eventForm">
+  <h3 id="eventModalTitle">행사 등록</h3>
+  <input type="hidden" id="editId">
+  <select id="category">
+    <option value="hq">HQ Visit</option><option value="meeting">미팅</option>
+    <option value="conference">학회</option><option value="training">교육</option>
+    <option value="kol">KOL Lecture</option><option value="other">기타</option>
+  </select>
+  <input id="eventTitle" placeholder="행사명" required>
+  <div class="row"><input id="startDate" type="date" required><input id="endDate" type="date" required></div>
+  <input id="eventTime" type="time">
+  <input id="eventPlace" placeholder="장소">
+  <textarea id="eventDesc" rows="3" placeholder="행사 내용"></textarea>
+  <div class="row"><button type="button" class="btn ghost" id="cancelEvent">취소</button><button class="btn primary">저장</button></div>
+</form></dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
